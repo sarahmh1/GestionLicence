@@ -1,0 +1,368 @@
+// sidebar.component.scss
+.sidebar-wrapper {
+  background: linear-gradient(180deg, #1a204c 0%, #2a3060 100%) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  border: none;
+  min-height: 100vh;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  z-index: 999;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+
+  // Correction: Assurer que tout le fond est bleu
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #1a204c 0%, #2a3060 100%);
+    z-index: -1;
+  }
+
+  .logo {
+    margin: 0;
+    padding: 30px 20px;
+    text-align: center; // Centre le logo
+    background: linear-gradient(180deg, #1a204c 0%, #242b58 100%);
+    border-bottom: 2px solid rgba(243, 110, 36, 0.3);
+    display: flex;
+    justify-content: center; // Centre horizontalement
+    align-items: center; // Centre verticalement
+
+    .logo-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      img {
+        width: 180px;
+        height: auto;
+        filter: drop-shadow(0 4px 8px rgba(243, 110, 36, 0.4));
+        transition: all 0.3s ease;
+        margin: 0 auto; // Centre l'image
+
+        &:hover {
+          transform: scale(1.05);
+          filter: drop-shadow(0 6px 12px rgba(243, 110, 36, 0.6));
+        }
+      }
+    }
+  }
+
+  .nav.responsive-nav {
+    background: transparent !important;
+    margin: 0;
+    border: none;
+    padding: 20px 0;
+    flex: 1;
+
+    // Correction: Supprimer tout fond blanc résiduel
+    li {
+      background: transparent !important;
+      margin: 5px 15px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+
+      // Correction pour les éléments mobiles
+      *[style*="color:#f36e24"] {
+        color: #fff !important;
+        
+        i, p {
+          color: #fff !important;
+        }
+      }
+
+      &.active {
+        background: linear-gradient(135deg, rgba(243, 110, 36, 0.2), rgba(255, 140, 66, 0.1)) !important;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 4px;
+          height: 80%;
+          background: linear-gradient(180deg, #f36e24, #ff8c42);
+          border-radius: 0 2px 2px 0;
+        }
+
+        a {
+          color: #ff8c42 !important;
+
+          i {
+            color: #ff8c42 !important;
+            transform: scale(1.1);
+          }
+
+          p {
+            color: #ff8c42 !important;
+            font-weight: 600;
+          }
+        }
+      }
+
+      a {
+        color: #fff !important;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        background: transparent !important;
+
+        i {
+          color: #f36e24 !important;
+          margin-right: 15px;
+          font-size: 1.3rem;
+          min-width: 25px;
+          transition: all 0.3s ease;
+        }
+
+        p {
+          color: #fff !important;
+          margin: 0;
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+
+        .caret {
+          border-top-color: #f36e24;
+          margin-left: auto;
+        }
+
+        .notification {
+          background: linear-gradient(135deg, #f36e24, #ff8c42);
+          color: white;
+          padding: 2px 6px;
+          border-radius: 10px;
+          font-size: 0.7rem;
+          font-weight: 700;
+          margin-left: 10px;
+          box-shadow: 0 2px 6px rgba(243, 110, 36, 0.4);
+        }
+
+        &:hover {
+          background: linear-gradient(135deg, rgba(243, 110, 36, 0.15), rgba(255, 140, 66, 0.1)) !important;
+          transform: translateX(5px);
+
+          i {
+            color: #ff8c42 !important;
+            transform: scale(1.2);
+          }
+
+          p {
+            color: #ff8c42 !important;
+          }
+        }
+      }
+
+      &.dropdown {
+        .dropdown-menu {
+          background: linear-gradient(135deg, #2a3060, #1a204c) !important;
+          border: none;
+          border-radius: 8px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+          margin: 5px 0;
+          padding: 10px 0;
+
+          li {
+            margin: 0;
+            border-radius: 0;
+            background: transparent !important;
+
+            a {
+              color: #fff !important;
+              padding: 12px 25px;
+              border-radius: 0;
+              background: transparent !important;
+
+              &:hover {
+                background: linear-gradient(135deg, #f36e24, #ff8c42) !important;
+                color: #fff !important;
+                transform: translateX(8px);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Correction spécifique pour les éléments mobiles
+    li[style*="color:#f36e24"] {
+      a {
+        color: #fff !important;
+        
+        i, p {
+          color: #fff !important;
+        }
+      }
+    }
+  }
+}
+
+// Suppression de tout fond blanc résiduel
+.sidebar-wrapper * {
+  background: transparent !important;
+}
+
+// Correction pour les séparateurs
+.separator {
+  background: rgba(243, 110, 36, 0.3) !important;
+  height: 1px;
+  margin: 10px 20px;
+}
+
+// Scrollbar personnalisée pour la sidebar
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f36e24, #ff8c42);
+  border-radius: 3px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #e55d1a, #f57c32);
+}
+
+// Animation d'entrée pour les items du menu
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav.responsive-nav li {
+  animation: slideIn 0.5s ease forwards;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    width: 220px;
+    transform: translateX(-100%);
+    
+    &.mobile-open {
+      transform: translateX(0);
+      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      padding: 20px 15px;
+      
+      .logo-img img {
+        width: 150px;
+      }
+    }
+
+    .nav.responsive-nav {
+      li {
+        margin: 3px 10px;
+        
+        a {
+          padding: 12px 15px;
+          
+          i {
+            font-size: 1.2rem;
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Correction FORCÉE pour les couleurs résiduelles
+.sidebar-wrapper {
+  // Force le fond bleu sur tous les éléments
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #fff !important;
+  }
+
+  // Correction spécifique pour les couleurs orange
+  i[style*="color:#f36e24"],
+  p[style*="color:#f36e24"],
+  a[style*="color:#f36e24"] {
+    color: #f36e24 !important;
+    
+    &:hover {
+      color: #ff8c42 !important;
+    }
+  }
+
+  // Correction pour les textes
+  .nav.responsive-nav {
+    li {
+      a {
+        i, p {
+          color: #fff !important;
+        }
+        
+        &:hover {
+          i, p {
+            color: #ff8c42 !important;
+          }
+        }
+      }
+    }
+  }
+
+// FORCER la suppression des styles inline rouges
+.sidebar-wrapper {
+  [style*="background-color: #ea652d"],
+  [style*="background-color:#ea652d"],
+  .dropdown-menu[style] {
+    background: linear-gradient(135deg, #2a3060, #1a204c) !important;
+    background-color: #2a3060 !important;
+  }
+  
+  // Supprimer tous les styles inline de couleur
+  [style*="color:#f36e24"],
+  [style*="color: #f36e24"] {
+    color: #fff !important;
+    
+    i, p {
+      color: #fff !important;
+    }
+    
+    &:hover {
+      color: #ff8c42 !important;
+      
+      i, p {
+        color: #ff8c42 !important;
+      }
+    }
+  }
+}}

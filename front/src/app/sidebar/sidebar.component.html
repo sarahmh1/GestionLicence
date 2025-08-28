@@ -1,0 +1,85 @@
+<div class="sidebar-wrapper" 
+     style="display: flex; flex-direction: column; justify-content: flex-start; padding-top: 0; margin: 0; border: none; background-color: #1a204c;">
+    
+    <div class="logo" style="margin-bottom:60px; margin-top: 0; border: none;">
+        <div class="logo-img">
+            <img src="/assets/img/xx.png" style="width: 200px; height: auto; display: block;"/>
+        </div>
+    </div>
+
+    <ul class="nav responsive-nav" style="background-color: #1a204c; margin: 0; border: none;">
+        
+        <li *ngIf="isMobileMenu()">
+            <a class="dropdown-toggle" data-toggle="dropdown" style="color:#f36e24;">
+                <i class="fa fa-dashboard" style="color:#f36e24;"></i>
+                <p class="hidden-lg hidden-md" style="color:#f36e24;">Dashboard</p>
+            </a>
+        </li>
+
+        <li class="dropdown" *ngIf="isMobileMenu()">
+            <a class="dropdown-toggle" data-toggle="dropdown" style="color:#f36e24;">
+                <i class="fa fa-globe" style="color:#f36e24;"></i>
+                <b class="caret hidden-sm hidden-xs" style="color:#f36e24;"></b>
+                <span class="notification hidden-sm hidden-xs" style="color:#f36e24;">5</span>
+                <p class="hidden-lg hidden-md" style="color:#f36e24;">
+                    5 Notifications
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <ul class="dropdown-menu" style="background-color: #ea652d;">
+                <li><a href="#" style="color: white;">Notification 1</a></li>
+                <li><a href="#" style="color: white;">Notification 2</a></li>
+                <li><a href="#" style="color: white;">Notification 3</a></li>
+                <li><a href="#" style="color: white;">Notification 4</a></li>
+                <li><a href="#" style="color: white;">Another notification</a></li>
+            </ul>
+        </li>
+
+        <li *ngIf="isMobileMenu()">
+            <a style="color:#f36e24;">
+                <i class="fa fa-search" style="color:#f36e24;"></i>
+                <p class="hidden-lg hidden-md" style="color:#f36e24;">Search</p>
+            </a>
+        </li>
+
+        <li *ngIf="isMobileMenu()">
+            <a href="" style="color:#f36e24;">
+                <p style="color:#f36e24;">Account</p>
+            </a>
+        </li>
+
+        <li class="dropdown" *ngIf="isMobileMenu()">
+            <a class="dropdown-toggle" data-toggle="dropdown" style="color:#f36e24;">
+                <p style="color:#f36e24;">
+                    Dropdown
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <ul class="dropdown-menu" style="background-color: #ea652d;">
+                <li><a href="#" style="color: white;">Action</a></li>
+                <li><a href="#" style="color: white;">Another action</a></li>
+                <li><a href="#" style="color: white;">Something</a></li>
+                <li><a href="#" style="color: white;">Another action</a></li>
+                <li><a href="#" style="color: white;">Something</a></li>
+                <li class="divider"></li>
+                <li><a href="#" style="color: white;">Separated link</a></li>
+            </ul>
+        </li>
+
+        <li *ngIf="isMobileMenu()">
+            <a style="color:#f36e24;">
+                <p style="color:#f36e24;">Log out</p>
+            </a>
+        </li>
+
+        <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
+
+        <!-- Menu principal -->
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a [routerLink]="[menuItem.path]" style="color:#f36e24;">
+                <i class="{{menuItem.icon}}" style="color:#f36e24;"></i>
+                <p style="color:#f36e24;">{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

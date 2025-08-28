@@ -1,0 +1,23 @@
+import { CommandePasserPar } from "./CommandePasserPar";
+
+
+export class Splunk {
+    splunkid: number;
+    client: string;
+     licences: {
+      nomDesLicences: string;
+      quantite: string;
+      dateEx: Date;
+}[];
+    dureeLicence: string;
+    nomDuContact: string;
+    adresseEmailContact: string;
+    mailAdmin: string;
+    commandePasserPar: CommandePasserPar;
+    ccMail: string[];
+    numero: string;
+    sousContrat: boolean;
+    approuve?: boolean;
+    remarques: string;
+    
+}
